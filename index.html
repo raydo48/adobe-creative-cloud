@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اشتراكات Adobe Creative Cloud - تنشيط على بريدك الخاص</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            margin-bottom: 20px;
+        }
+        
+        .logo i {
+            font-size: 4rem;
+            color: #0088cc;
+            margin-bottom: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #2AABEE, #0088cc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2AABEE;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popular {
+            border: 2px solid #2AABEE;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: -30px;
+            background: linear-gradient(45deg, #2AABEE, #0088cc);
+            color: white;
+            padding: 5px 35px;
+            transform: rotate(-45deg);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: #2AABEE;
+        }
+        
+        .price span {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+        
+        .duration {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+        
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .features li i {
+            color: #2AABEE;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #2AABEE, #0088cc);
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(42, 171, 238, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(42, 171, 238, 0.5);
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(45deg, #2AABEE, #0088cc);
+            box-shadow: 0 4px 12px rgba(42, 171, 238, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .btn-telegram:hover {
+            box-shadow: 0 6px 15px rgba(42, 171, 238, 0.5);
+        }
+        
+        /* Features Section */
+        .features-section {
+            margin-bottom: 50px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            text-align: right;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(42, 171, 238, 0.05);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #2AABEE, #0088cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: auto;
+            margin-left: 0;
+        }
+        
+        .feature-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2AABEE;
+        }
+        
+        .feature-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(90deg, #2AABEE, #0088cc);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            direction: ltr;
+            display: block;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .telegram-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #2AABEE;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(42, 171, 238, 0.5);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(42, 171, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://t.me/+2130549387060" class="telegram-float" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-adobe"></i>
+                <h1>اشتراكات Adobe Creative Cloud</h1>
+            </div>
+            
+            <div class="tagline">
+                احصل على جميع تطبيقات أدوبي الإبداعية على جهازين مع 100GB من التخزين السحابي، و500 رصيد شهري للذكاء الاصطناعي، كل ذلك على بريدك الإلكتروني الشخصي!
+            </div>
+            
+            <a href="#pricing" class="btn">تصفح خطط الأسعار</a>
+        </header>
+
+        <section id="pricing" class="pricing-section">
+            <div class="section-title">
+                <h2>خطط الاشتراك</h2>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>اشتراك لمدة شهر</h3>
+                    <div class="price">$15</div>
+                    <div class="duration">شهرياً</div>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> تنشيط على بريدك الإلكتروني الشخصي</li>
+                        <li><i class="fas fa-check-circle"></i> 500 رصيد ذكاء اصطناعي شهرياً</li>
+                        <li><i class="fas fa-check-circle"></i> 100GB تخزين سحابي</li>
+                        <li><i class="fas fa-check-circle"></i> استخدام على جهازين (PC أو محمول)</li>
+                    </ul>
+                    <a href="https://t.me/+2130549387060" class="btn btn-telegram">
+                        <i class="fab fa-telegram-plane"></i> طلب عبر تلجرام
+                    </a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأفضل</div>
+                    <h3>اشتراك لمدة 3 شهور</h3>
+                    <div class="price">$35</div>
+                    <div class="duration">توفير 33%</div>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> تنشيط على بريدك الإلكتروني الشخصي</li>
+                        <li><i class="fas fa-check-circle"></i> 500 رصيد ذكاء اصطناعي شهرياً</li>
+                        <li><i class="fas fa-check-circle"></i> 100GB تخزين سحابي</li>
+                        <li><i class="fas fa-check-circle"></i> استخدام على جهازين (PC أو محمول)</li>
+                        <li><i class="fas fa-check-circle"></i> توفير كبير مقارنة بالاشتراك الشهري</li>
+                    </ul>
+                    <a href="https://t.me/+2130549387060" class="btn btn-telegram">
+                        <i class="fab fa-telegram-plane"></i> طلب عبر تلجرام
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="section-title">
+                <h2>مميزات الاشتراك</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>تنشيط على بريدك الشخصي</h4>
+                    <p>الاشتراك يتم تنشيطه على بريدك الإلكتروني الخاص، مما يضمن التحكم الكامل في حسابك وأمان بياناتك.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>رصيد ذكاء اصطناعي</h4>
+                    <p>استفد من أحدث تقنيات الذكاء الاصطناعي في أدوات أدوبي مع 500 رصيد شهري مدعومة بالذكاء الاصطناعي المتقدم.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h4>تخزين سحابي</h4>
+                    <p>احفظ مشاريعك وأعمالك بسهولة وأمان مع مساحة تخزين سحابي تصل إلى 100GB، متاحة من أي مكان.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>استخدام متعدد الأجهزة</h4>
+                    <p>استخدم اشتراكك على جهازين مختلفين (كمبيوتر أو هاتف) في نفس الوقت، مما يتيح لك المرونة في العمل.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-section">
+            <h3>هل لديك أي استفسار أو ترغب في الطلب؟</h3>
+            <p>فريق الدعم متاح لمساعدتك على مدار الساعة عبر تلجرام!</p>
+            <div class="contact-info">
+                <i class="fab fa-telegram-plane"></i> +213 054 93 87 060
+            </div>
+            <a href="https://t.me/+2130549387060" class="btn btn-telegram">
+                <i class="fab fa-telegram-plane"></i> تواصل معنا على تلجرام
+            </a>
+        </div>
+        
+        <footer>
+            <p>© 2025 Adobe Creative Cloud اشتراكات. جميع الحقوق محفوظة.</p>
+            <p>هذه الخدمة غير مرتبطة بشركة Adobe Inc.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple animation for elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.pricing-card, .feature-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
