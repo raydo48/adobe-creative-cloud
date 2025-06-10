@@ -5,24 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>اشتراكات Adobe Creative Cloud - تنشيط على بريدك الخاص</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #FF6B00; /* لون برتقالي جذاب يحفز على الشراء */
+            --secondary: #0078D7; /* لون أزرق أدوبي */
+            --accent: #FFD700; /* لون ذهبي للتأكيد على العروض */
+            --dark: #0f2027;
+            --darker: #08141a;
+            --light: #ffffff;
+            --gray: #f0f0f0;
+            --success: #4CAF50;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
             line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 107, 0, 0.1) 0%, rgba(0, 120, 215, 0.05) 50%, transparent 80%);
+            z-index: -1;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -31,6 +55,22 @@
             text-align: center;
             padding: 40px 0 20px;
             margin-bottom: 30px;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent);
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
         }
         
         .logo {
@@ -38,113 +78,172 @@
         }
         
         .logo i {
-            font-size: 4rem;
-            color: #0088cc;
+            font-size: 5rem;
+            color: var(--primary);
             margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
         }
         
         .logo h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #2AABEE, #0088cc);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), #ff8c00);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .tagline {
-            font-size: 1.3rem;
-            max-width: 600px;
+            font-size: 1.4rem;
+            max-width: 800px;
             margin: 0 auto 30px;
             line-height: 1.8;
             padding: 0 20px;
+            color: var(--gray);
+        }
+        
+        .highlight {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 0, 0.2) 30%, rgba(255, 107, 0, 0.2) 70%, transparent 100%);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        
+        .apps-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .app-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
         
         /* Pricing Section */
         .pricing-section {
-            margin-bottom: 50px;
+            margin-bottom: 70px;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             display: inline-block;
             padding-bottom: 10px;
-            border-bottom: 3px solid #2AABEE;
+            border-bottom: 3px solid var(--primary);
+            font-weight: 800;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-size: 1.1rem;
+            color: var(--gray);
         }
         
         .pricing-cards {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
         }
         
         .pricing-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
             width: 100%;
-            max-width: 350px;
+            max-width: 370px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         .popular {
-            border: 2px solid #2AABEE;
-            position: relative;
-            overflow: hidden;
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .popular:hover {
+            transform: scale(1.05) translateY(-10px);
         }
         
         .popular-badge {
             position: absolute;
             top: 15px;
             left: -30px;
-            background: linear-gradient(45deg, #2AABEE, #0088cc);
-            color: white;
-            padding: 5px 35px;
+            background: linear-gradient(45deg, var(--primary), #ff8c00);
+            color: #000;
+            padding: 8px 40px;
             transform: rotate(-45deg);
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-weight: 900;
+            font-size: 1rem;
         }
         
         .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 15px 0;
-            color: #2AABEE;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin: 20px 0 5px;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
         }
         
         .price span {
-            font-size: 1.1rem;
-            color: #ccc;
+            font-size: 1.2rem;
+            color: var(--gray);
         }
         
         .duration {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.8;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: var(--accent);
+            font-weight: 700;
         }
         
         .features {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             text-align: right;
         }
         
         .features li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
@@ -153,161 +252,460 @@
         }
         
         .features li i {
-            color: #2AABEE;
-            font-size: 1.1rem;
+            color: var(--success);
+            font-size: 1.3rem;
+            min-width: 25px;
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(45deg, #2AABEE, #0088cc);
-            color: #fff;
-            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--primary), #ff8c00);
+            color: #000;
+            padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 900;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(42, 171, 238, 0.3);
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff8c00, var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(42, 171, 238, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+        }
+        
+        .btn:hover::after {
+            opacity: 1;
         }
         
         .btn-telegram {
             background: linear-gradient(45deg, #2AABEE, #0088cc);
-            box-shadow: 0 4px 12px rgba(42, 171, 238, 0.3);
+            box-shadow: 0 6px 15px rgba(42, 171, 238, 0.4);
             display: flex;
             align-items: center;
             gap: 10px;
             justify-content: center;
             margin: 0 auto;
+            color: white;
+            width: 90%;
         }
         
         .btn-telegram:hover {
-            box-shadow: 0 6px 15px rgba(42, 171, 238, 0.5);
+            box-shadow: 0 8px 20px rgba(42, 171, 238, 0.6);
+        }
+        
+        .btn-telegram:hover::after {
+            background: linear-gradient(45deg, #0088cc, #2AABEE);
+        }
+        
+        .savings {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: 700;
+            color: var(--success);
         }
         
         /* Features Section */
         .features-section {
-            margin-bottom: 50px;
+            margin-bottom: 70px;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 800px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
             text-align: right;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(42, 171, 238, 0.05);
+            transform: translateY(-8px);
+            background: rgba(255, 107, 0, 0.05);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
         }
         
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #2AABEE, #0088cc);
-            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--primary), #ff8c00);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-right: auto;
             margin-left: 0;
         }
         
         .feature-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #2AABEE;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 800;
         }
         
         .feature-card p {
             opacity: 0.9;
-            line-height: 1.7;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 70px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 107, 0, 0.1);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            margin-bottom: 70px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .stars {
+            color: var(--accent);
+            margin-top: 10px;
+            font-size: 1.1rem;
         }
         
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(90deg, #2AABEE, #0088cc);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
+            background: linear-gradient(90deg, var(--primary), #ff8c00);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px 0;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+        
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
         }
         
         .contact-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 900;
+            position: relative;
         }
         
         .contact-info {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 20px 0;
+            font-size: 1.7rem;
+            font-weight: 900;
+            margin: 25px 0;
             direction: ltr;
             display: block;
             background: rgba(0, 0, 0, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: 15px 25px;
+            border-radius: 15px;
             display: inline-block;
+            color: #000;
+        }
+        
+        /* Guarantee Section */
+        .guarantee-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .guarantee-icon {
+            font-size: 2.5rem;
+            color: var(--success);
+        }
+        
+        .guarantee-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--success);
         }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0 20px;
-            margin-top: 30px;
+            padding: 40px 0 30px;
+            margin-top: 50px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.7;
+            color: var(--gray);
         }
         
         .telegram-float {
             position: fixed;
-            bottom: 25px;
-            left: 25px;
+            bottom: 30px;
+            left: 30px;
             background: #2AABEE;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.3rem;
             z-index: 100;
-            box-shadow: 0 5px 15px rgba(42, 171, 238, 0.5);
+            box-shadow: 0 8px 20px rgba(42, 171, 238, 0.6);
             animation: pulse 2s infinite;
             text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(42, 171, 238, 0.8);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(42, 171, 238, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 107, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
         }
         
         /* Responsive */
+        @media (max-width: 992px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
         @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                font-size: 1.3rem;
+            }
+            
+            .telegram-float {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+                bottom: 20px;
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .logo h1 {
                 font-size: 1.8rem;
             }
@@ -321,11 +719,17 @@
             }
             
             .price {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .contact-info {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                padding: 10px 15px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -337,32 +741,49 @@
 
     <div class="container">
         <header>
+            <div class="badge">ضمان استرجاع الأموال لمدة 30 يوم</div>
             <div class="logo">
                 <i class="fab fa-adobe"></i>
                 <h1>اشتراكات Adobe Creative Cloud</h1>
             </div>
             
             <div class="tagline">
-                احصل على جميع تطبيقات أدوبي الإبداعية على جهازين مع 100GB من التخزين السحابي، و500 رصيد شهري للذكاء الاصطناعي، كل ذلك على بريدك الإلكتروني الشخصي!
+                <span class="highlight">كل برامج أدوبي الإبداعية</span> على جهازين مع 100GB تخزين سحابي، و500 رصيد شهري للذكاء الاصطناعي، 
+                <span class="highlight">التنشيط على بريدك الشخصي</span> فقط! استمتع بأدوات الإبداع الاحترافية بأفضل سعر في السوق.
             </div>
             
-            <a href="#pricing" class="btn">تصفح خطط الأسعار</a>
+            <div class="apps-grid">
+           
+                <div class="app-icon"><i class="fas fa-camera-retro"></i></div>
+                <div class="app-icon"><i class="fas fa-video"></i></div>
+                <div class="app-icon"><i class="fas fa-paint-brush"></i></div>
+                <div class="app-icon"><i class="fas fa-wave-square"></i></div>
+                <div class="app-icon"><i class="fas fa-music"></i></div>
+                <div class="app-icon"><i class="fas fa-pencil-ruler"></i></div>
+            
+            </div>
+            
+            <a href="#pricing" class="btn">اكتشف العروض الحصرية</a>
         </header>
 
         <section id="pricing" class="pricing-section">
             <div class="section-title">
-                <h2>خطط الاشتراك</h2>
+                <h2>خطط الاشتراك الشاملة</h2>
+                <p>جميع الخطط تشمل كل برامج أدوبي الإبداعية (Photoshop, Illustrator, Premiere Pro, After Effects, وغيرها)</p>
             </div>
             <div class="pricing-cards">
                 <div class="pricing-card">
                     <h3>اشتراك لمدة شهر</h3>
                     <div class="price">$15</div>
                     <div class="duration">شهرياً</div>
+                    <div class="savings">توفير 75% مقارنة بالسعر الرسمي</div>
                     <ul class="features">
                         <li><i class="fas fa-check-circle"></i> تنشيط على بريدك الإلكتروني الشخصي</li>
                         <li><i class="fas fa-check-circle"></i> 500 رصيد ذكاء اصطناعي شهرياً</li>
                         <li><i class="fas fa-check-circle"></i> 100GB تخزين سحابي</li>
                         <li><i class="fas fa-check-circle"></i> استخدام على جهازين (PC أو محمول)</li>
+                        <li><i class="fas fa-check-circle"></i> جميع برامج أدوبي بدون استثناء</li>
+                        <li><i class="fas fa-check-circle"></i> تحديثات فورية</li>
                     </ul>
                     <a href="https://t.me/+2130549387060" class="btn btn-telegram">
                         <i class="fab fa-telegram-plane"></i> طلب عبر تلجرام
@@ -370,27 +791,42 @@
                 </div>
                 
                 <div class="pricing-card popular">
-                    <div class="popular-badge">الأفضل</div>
+                    <div class="popular-badge">الأكثر طلباً</div>
                     <h3>اشتراك لمدة 3 شهور</h3>
                     <div class="price">$35</div>
-                    <div class="duration">توفير 33%</div>
+                    <div class="duration">توفير 33% - فقط $11.66 شهرياً</div>
+                    <div class="savings">توفير 80% مقارنة بالسعر الرسمي</div>
                     <ul class="features">
                         <li><i class="fas fa-check-circle"></i> تنشيط على بريدك الإلكتروني الشخصي</li>
                         <li><i class="fas fa-check-circle"></i> 500 رصيد ذكاء اصطناعي شهرياً</li>
                         <li><i class="fas fa-check-circle"></i> 100GB تخزين سحابي</li>
                         <li><i class="fas fa-check-circle"></i> استخدام على جهازين (PC أو محمول)</li>
-                        <li><i class="fas fa-check-circle"></i> توفير كبير مقارنة بالاشتراك الشهري</li>
+                        <li><i class="fas fa-check-circle"></i> جميع برامج أدوبي بدون استثناء</li>
+                        <li><i class="fas fa-check-circle"></i> تحديثات فورية</li>
+                        <li><i class="fas fa-check-circle"></i> دعم فوري على مدار الساعة</li>
                     </ul>
                     <a href="https://t.me/+2130549387060" class="btn btn-telegram">
                         <i class="fab fa-telegram-plane"></i> طلب عبر تلجرام
                     </a>
+                </div>
+                
+            </div>
+            
+            <div class="guarantee-section">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="guarantee-content">
+                    <h4>ضمان الاسترجاع لمدة 30  يوم</h4>
+                    <p>إذا لم تكن راضيًا عن الخدمة لأي مشكل لم نستطع حله، سنعيد لك كامل المبلغ خلال 30 أيوم من الشراء</p>
                 </div>
             </div>
         </section>
 
         <section class="features-section">
             <div class="section-title">
-                <h2>مميزات الاشتراك</h2>
+                <h2>لماذا نتميز عن غيرنا؟</h2>
+                <p>نقدم لك تجربة فريدة لا تجدها مع مزودي الخدمة الآخرين</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -398,7 +834,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h4>تنشيط على بريدك الشخصي</h4>
-                    <p>الاشتراك يتم تنشيطه على بريدك الإلكتروني الخاص، مما يضمن التحكم الكامل في حسابك وأمان بياناتك.</p>
+                    <p>الاشتراك يتم تنشيطه على بريدك الإلكتروني الخاص فقط، مما يضمن لك التحكم الكامل في حسابك وأمان بياناتك دون مشاركتها مع أحد.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -406,15 +842,15 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     <h4>رصيد ذكاء اصطناعي</h4>
-                    <p>استفد من أحدث تقنيات الذكاء الاصطناعي في أدوات أدوبي مع 500 رصيد شهري مدعومة بالذكاء الاصطناعي المتقدم.</p>
+                    <p>استفد من أحدث تقنيات الذكاء الاصطناعي في أدوات أدوبي مع 500 رصيد شهري مدعومة بالذكاء الاصطناعي المتقدم لتحقيق إبداع لا حدود له.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <h4>تخزين سحابي</h4>
-                    <p>احفظ مشاريعك وأعمالك بسهولة وأمان مع مساحة تخزين سحابي تصل إلى 100GB، متاحة من أي مكان.</p>
+                    <h4>تخزين سحابي فائق</h4>
+                    <p>احفظ مشاريعك وأعمالك بسهولة وأمان مع مساحة تخزين سحابي تصل إلى 100GB، متاحة من أي مكان وفي أي وقت لمواصلة عملك بسلاسة.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -422,7 +858,92 @@
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h4>استخدام متعدد الأجهزة</h4>
-                    <p>استخدم اشتراكك على جهازين مختلفين (كمبيوتر أو هاتف) في نفس الوقت، مما يتيح لك المرونة في العمل.</p>
+                    <p>استخدم اشتراكك على جهازين مختلفين (كمبيوتر أو هاتف) في نفس الوقت، مما يتيح لك المرونة في العمل من أي مكان ومن أي جهاز.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>تحديثات فورية</h4>
+                    <p>احصل على أحدث التحديثات والميزات بمجرد إصدارها من أدوبي، دون أي تأخير أو تكاليف إضافية لمواكبة أحدث التقنيات.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>دعم فوري 24/7</h4>
+                    <p>فريق دعمنا متاح على مدار الساعة طوال أيام الأسبوع لمساعدتك في أي استفسار أو مشكلة تواجهك، لضمان تجربة سلسة.</p>
+                </div>
+            </div>
+        </section>
+        
+        
+        <section class="faq-section">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على أكثر الأسئلة التي تهم عملائنا</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل الاشتراك يشمل جميع برامج أدوبي؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، الاشتراك يشمل جميع برامج أدوبي الإبداعية بدون استثناء، بما في ذلك Photoshop، Illustrator، Premiere Pro، After Effects، InDesign، Adobe XD، Lightroom، وغيرها من البرامج.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        كيف يتم التنشيط على بريدي الشخصي؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        بعد الشراء ارسل لنا فقط اسم بريدك الالكتروني و سيتم تفعيل الاشتراك في وقت وجيز .
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ما هو رصيد الذكاء الاصطناعي وكيف أستخدمه؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        رصيد الذكاء الاصطناعي هو عدد المرات التي يمكنك فيها استخدام ميزات الذكاء الاصطناعي في برامج أدوبي مثل Generative Fill في Photoshop أو Text to Vector في Illustrator. تحصل على 500 رصيد شهرياً تتجدد تلقائياً.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل يمكنني استخدام الاشتراك على أكثر من جهاز؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، يمكنك تثبيت البرامج وتشغيلها على جهازين مختلفين في نفس الوقت، مثل الكمبيوتر المكتبي واللابتوب، أو الكمبيوتر والجهاز اللوحي.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ماذا يحدث عند انتهاء مدة الاشتراك؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        قبل انتهاء الاشتراك بأسبوع، سنرسل لك تنبيهًا لتجديد الاشتراك. يمكنك تجديد الاشتراك بنفس السعر أو الترقية إلى خطة أطول للحصول على خصم أكبر.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        هل هناك ضمان إذا لم يعمل الاشتراك؟
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        نعم، نقدم ضمان استرجاع الأموال لمدة كاملة على الاشتراك . إذا واجهتك أي مشكلة ولم نتمكن من حلها، سنعيد لك كامل المبلغ دون أي أسئلة.
+                    </div>
                 </div>
             </div>
         </section>
@@ -431,23 +952,23 @@
             <h3>هل لديك أي استفسار أو ترغب في الطلب؟</h3>
             <p>فريق الدعم متاح لمساعدتك على مدار الساعة عبر تلجرام!</p>
             <div class="contact-info">
-                <i class="fab fa-telegram-plane"></i> +213 54 93 87 060
+                <i class="fab fa-telegram-plane"></i> +213 054 93 87 060
             </div>
-            <a href="https://t.me/+213549387060" class="btn btn-telegram">
+            <a href="https://t.me/+2130549387060" class="btn btn-telegram">
                 <i class="fab fa-telegram-plane"></i> تواصل معنا على تلجرام
             </a>
         </div>
         
         <footer>
             <p>© 2025 Adobe Creative Cloud اشتراكات. جميع الحقوق محفوظة.</p>
-            <p>هذه الخدمة غير مرتبطة بشركة Adobe Inc.</p>
+            <p>هذه الخدمة غير مرتبطة بشركة Adobe Inc. Adobe و Creative Cloud هي علامات تجارية مسجلة لشركة Adobe Inc.</p>
         </footer>
     </div>
 
     <script>
-        // Simple animation for elements on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.pricing-card, .feature-card');
+            // Animations for elements on scroll
+            const cards = document.querySelectorAll('.pricing-card, .feature-card, .testimonial-card');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -461,8 +982,30 @@
             cards.forEach(card => {
                 card.style.opacity = 0;
                 card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
